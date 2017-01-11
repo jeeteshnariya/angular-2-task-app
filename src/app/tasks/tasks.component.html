@@ -1,0 +1,20 @@
+<form class="well" (submit)="addTask($event)">
+    <div class="form-group">
+        <input type="text" [(ngModel)]="title" name="title" placeholder="Add Tasks ... " class="form-control">
+    </div>
+</form>
+
+<div class="row tasklist" *ngFor="let task of tasks">
+    <div class="col s3">
+        <p>
+            <input type="checkbox" (click)="updateStatus(task)" [checked]="task.isDone" id="{{task._id}}">
+            <label for="{{task._id}}"></label>
+        </p>
+    </div>
+    <div class="col s7">
+        <p> {{task.title}} </p>
+    </div>
+    <div class="col s2">
+        <button type="button" class="btn-floating red" (click)="deleteTask(task._id)"><i class="material-icons">delete</i></button>
+    </div>
+</div>
